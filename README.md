@@ -263,3 +263,34 @@ git log
 
 git push origin master
 ```
+
+## Chapter03. 깃 & 깃허브 기본 기능 실습하기
+
+### 3.1 프로젝트 소개
+
+- 프로젝트에 Node.js와 Express.js를 사용해 실습한다.
+
+### 3.2 프로젝트 실습 환경 구축하기
+
+### 3.3 프로젝트 설정 및 생성하기
+
+```bash
+express {project-name} --no-view
+```
+
+### 3.4 깃 지역 저장소 및 초기 파일 설정
+
+1. 깃 지역 저장소 생성: git init
+2. 깃 사용자 등록: git config
+   2.1 사용자 등록이 되었는지 확인: cat .git/config
+3. 깃허브 원격 저장소 생성
+4. 지역 저장소에 원격 저장소 등록: git remote add origin {주}
+5. .gitignore 파일 생성
+6. 파일 등록 및 커밋 생성: git add, git commit
+7. 원격 저장소에 새로운 커밋 반영: git push
+
+### 3.5 메인 페이지 타이틀 변경하기
+
+### 3.6 메인 페이지에 운영팀 연락처 추가하기
+
+### 3.7 원격 저장소에 커밋 등록하
