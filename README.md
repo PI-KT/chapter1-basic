@@ -1,6 +1,8 @@
 # Git & GitHub
 
-[FNS](http://www.fnsusa.com)
+## [FNS](http://www.fnsusa.com)
+
+## [FNS]<http://www.fnsusa.com>
 
 ## Chapter00, 실습 환경 구축하기
 
@@ -110,9 +112,52 @@ git remote add origin {원격 저장소 주}
 - 트리를 이해하면 깃으로 관리하는 파일의 현재 상태를 더 잘 이해할 수 있다.
 
   2.4.1 깃 작업 트리
-  2.4.2 깃으로 파일 상태 확
 
-```csharp
-string temp = string.Empty
-//comment
+- 작업 트리란 깃이 추적(관리)하는 파일과 추적하지 않는 파일을 구분하고, 추적하는 파일들의 상태를 구분 짓는 영역이다.
+- 작업 트리 내용들은 .git 숨김 폴더 안에서 관리된다.
+
+  1. 작업 디렉토리(Working Directory)
+
+  - 실제 작업 중인 파일들이 존재하는 영역이다. 파일을 생성하거나 기존 파일을 수정한다면 이는 작업 중인 파일을 의미한다.
+
+  2. 스테이징 영역(Staging Area)
+
+  - 작업 디렉토리에서 작업 중인 파일 중 깃이 추적하는 파일들을 식별하는 영역이다. 실제로는 .git 숨김 폴더 내부의 index 파일에서 추적하는 파일들을 식별하고 있다.
+  - git add 명령어를 이용하여 스테이징 영역에 추적하는 파일로 등록
+
+  3. 지역 저장소(Local Repository)
+
+  - 스테이징 영역에서 추적하는 파일이 커밋으로 등록되는 영역이다. 즉, 스테이징 영역의 파일 혹은 파일들이 하나의 변경 단위인 커밋으로 등록되는 과정이다.
+  - git commit 명령어를 이용하여 지역 저장소에 등록하게 된다.
+
+  2.4.2 깃으로 파일 상태 확인
+
+### Untracked 및 Tracked 상태
+
+깃에서 관리하는 파일은 Untracked와 Tracked상태로 나누어 진다. 현재 작업 진행 중인 작업 디렉토리에서 새로 생성된 파일은 Untracked 상태가 된다. 주의할 점은 한 번 Tracked 상태가 되었다가 작업 디렉토리에서 수정된 파일은 Untracked 상태가 아니다.
+
+git status 명령어를 실행하여 프로젝트의 현재 파일 상태를 확인한다.
+
+```bash
+git status
 ```
+
+git add 명령어로 커밋에 포함될 파일로 등록하면 파일 상태가 tracked로 변경된다.
+
+```bash
+git add "fileName"
+git add "folderName"
+```
+
+### Unmodified or Modified 상태
+
+한 번 스테이징 영역에 추가된 파일은 수정 여부에 따라 Unmodified상태와 Modified 상태로 분류된다.
+
+git add 명령으로 스테이징 영역에 추가된 파일의 상태를 크게 2가지로 분류할 수 있다.
+
+1. Stage: 커밋으로 기록할 수 있는 최종 상태
+2. Unstage: 스테이징 영역에 있지만, 파일에 변화가 있는 상태
+
+Stage 상태는 Tracked와 Unmodified 상태로 분류할 수 있지만 거의 같은 의미이다. Unmodified 상태는 Tracked 상태이면서 파일이 변경되지 않은 상태이다.
+
+Unstage 상태에 있는 파일은 스테이지 영역에 있음에도 불구하고 커밋으로 기록할 수 있는 상태가 아니다. 즉, Stage 상태였다가 파일에 변경이 생기는 순간 Unstage인 Modified상태로 이전된다.
