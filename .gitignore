@@ -1,0 +1,11 @@
+# .gitignore 파일에서 #으로 시작하면 주석이다
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Test ignore
+ignore.txt
